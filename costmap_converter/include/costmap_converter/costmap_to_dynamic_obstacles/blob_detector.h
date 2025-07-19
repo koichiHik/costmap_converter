@@ -83,6 +83,14 @@ public:
   virtual void detect(const cv::Mat& image, std::vector<cv::KeyPoint>& keypoints,
                       const cv::Mat& mask = cv::Mat());
 
+  virtual void setParams(const cv::SimpleBlobDetector::Params& params) override {
+      params_ = params;
+  }
+
+  virtual cv::SimpleBlobDetector::Params getParams() const override {
+    return params_;
+  }
+
   /**
    * @brief Access contours extracted during detection stage
    * @return Read-only reference to the contours set of the previous detect() run
